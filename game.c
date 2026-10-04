@@ -6,7 +6,7 @@ void init_game(Game *game)
     {
         for(int c = 0;c < BOARD_SIZE;c++)
         {
-            game->cells[r][r] = EMPTY_CELL;
+            game->cells[r][c] = EMPTY_CELL;
         }
     }
     game->current_player = 'X';
