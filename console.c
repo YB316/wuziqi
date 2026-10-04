@@ -26,13 +26,13 @@ void draw_board(const Game *game,const ConsoleLayout *layout)
     printf("   ");
     for (int c = 0; c <BOARD_SIZE; c++)
     {
-        printf(" %d ",c);
+        printf("%d   ",c);
     }
     printf("\n");
 
     for (int r = 0;r < BOARD_SIZE;r++)
     {
-        printf("  ");
+        printf("   ");
         for (int c = 0;c <BOARD_SIZE;c++)
         {
             printf("+---");
@@ -50,11 +50,11 @@ void draw_board(const Game *game,const ConsoleLayout *layout)
     printf("  ");
     for (int c = 0; c < BOARD_SIZE; c++)
     {
-        printf("+---");
+        printf(" +---");
     }
     printf("+\n");
 
-    printf("\n当前玩家: %c\n",game->current_player);
+    printf("\nCurrent Player: %c\n",game->current_player);
 }
 
 int get_mouse_click(int *out_row,int *out_col,const ConsoleLayout *layout)

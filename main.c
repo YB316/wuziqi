@@ -16,7 +16,7 @@ int main()
     {
         draw_board(&game,&layout);
 
-        printf("请玩家 %c 点击鼠标左键落子…\n",game.current_player);
+        printf("Player %c click mouse to move…\n",game.current_player);
 
         int row,col;
         if (get_mouse_click(&row,&col,&layout))
@@ -25,9 +25,9 @@ int main()
 
             if (result == MOVE_OCCUPIED)
             {
-                printf("❌ 此处已经落子，请重新选择!\n");
+                printf("❌ Occupied! Choose another cell.\n");
             }else if(result == MOVE_OUT_OF_BOUNDS){
-                printf("❌ 超出棋盘范围，请重新选择!\n");
+                printf("❌ Out of bounds!Click inside the board.\n");
             }
         }      
     }
@@ -36,16 +36,16 @@ int main()
 
     if (game.status == GAME_X_WINS)
     {
-        printf("玩家 X 获胜!\n");
+        printf("Player X wins!\n");
     } else if (game.status == GAME_O_WINS)
     {
-        printf("玩家 O 获胜!\n");
+        printf("Player O wins!\n");
     } else if (game.status == GAME_DRAW)
     {
-        printf("平局!棋盘已满。\n");
+        printf("It is a draw!Board is full.\n");
     }
 
-    printf("\n按回车键退出…");
+    printf("\nPress Enter to exit…");
     getchar();
 
     return 0;
