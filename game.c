@@ -34,9 +34,9 @@ MoveResult make_move(Game *game,int row,int col)
     {
         if (game->current_player == 'X')
         {
-            game->current_player == 'O';
+            game->current_player = 'O';
         } else {
-            game->current_player == 'X';
+            game->current_player = 'X';
         }
     }
 

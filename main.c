@@ -6,7 +6,7 @@ int main()
 {
     Game game;
 
-    ConsoleLayout layout = {4,2,4,2};
+    ConsoleLayout layout = {4,0,4,2};
     
     init_game(&game);
 
@@ -16,21 +16,22 @@ int main()
     {
         draw_board(&game,&layout);
 
-        printf("Player %c click mouse to move…\n",game.current_player);
+        printf("Player %c click mouse to move...\n",game.current_player);
 
         int row,col;
         if (get_mouse_click(&row,&col,&layout))
         {
             MoveResult result = make_move(&game,row,col);
 
-            if (result == MOVE_OCCUPIED)
-            {
-                printf("❌ Occupied! Choose another cell.\n");
-            }else if(result == MOVE_OUT_OF_BOUNDS){
-                printf("❌ Out of bounds!Click inside the board.\n");
+            if (result == MOVE_OCCUPIED){
+                printf("Occupied! Choose another cell.\n");
+            } else if(result == MOVE_OUT_OF_BOUNDS){
+                printf("Out of bounds!Click inside the board.\n");
             }
         }      
     }
+
+    system("cls");
 
     draw_board(&game,&layout);
 
@@ -45,7 +46,7 @@ int main()
         printf("It is a draw!Board is full.\n");
     }
 
-    printf("\nPress Enter to exit…");
+    printf("\nPress Enter to exit...\n");
     getchar();
 
     return 0;

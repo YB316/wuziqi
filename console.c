@@ -9,7 +9,7 @@ void init_console()
 
     DWORD mode;
     GetConsoleMode(hInput,&mode);
-    SetConsoleMode(hInput,mode | ENABLE_MOUSE_INPUT | ENABLE_EXTENDED_FLAGS);
+    SetConsoleMode(hInput,(mode | ENABLE_MOUSE_INPUT | ENABLE_EXTENDED_FLAGS) & ~ENABLE_QUICK_EDIT_MODE);
 
     HANDLE houtput = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursor_info = {1,FALSE};
@@ -50,7 +50,7 @@ void draw_board(const Game *game,const ConsoleLayout *layout)
     printf("  ");
     for (int c = 0; c < BOARD_SIZE; c++)
     {
-        printf(" +---");
+        printf("+---");
     }
     printf("+\n");
 
@@ -76,7 +76,7 @@ int get_mouse_click(int *out_row,int *out_col,const ConsoleLayout *layout)
                 int mouse_y = mouse.dwMousePosition.Y;
 
                 int col = (mouse_x - layout->start_x) / layout->cell_width;
-                int row = (mouse_y - layout->start_y) / layout->cell_height;
+                int row = (mouse_y - layout->start_y - 1) / layout->cell_height;
 
                 if (row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE )
                 {
